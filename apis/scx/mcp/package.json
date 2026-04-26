@@ -1,0 +1,26 @@
+{
+  "name": "scx-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Pacemaker v2 (SCX) — demand forecasting & supply chain APIs",
+  "type": "module",
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx --watch src/server.ts",
+    "start": "node dist/server.js",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/server.js"
+  },
+  "keywords": ["mcp", "modelcontextprotocol", "pacemaker", "scx", "forecasting"],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.16.5",
+    "typescript": "^5.5.4"
+  }
+}

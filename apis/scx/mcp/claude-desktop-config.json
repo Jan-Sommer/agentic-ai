@@ -1,0 +1,71 @@
+{
+  "_comment": "Claude Desktop MCP configuration for SCX (Pacemaker v2).",
+  "_instructions": [
+    "1. Build the server first: cd scx-mcp-server && npm install && npm run build",
+    "2. Copy this file's mcpServers block into your Claude Desktop config:",
+    "   macOS:   ~/Library/Application Support/Claude/claude_desktop_config.json",
+    "   Windows: %APPDATA%\\Claude\\claude_desktop_config.json",
+    "3. Replace all placeholder values (YOUR_*) with real values",
+    "4. Restart Claude Desktop"
+  ],
+
+  "mcpServers": {
+
+    "scx": {
+      "_comment": "Local development — stdio transport, runs as child process",
+      "command": "node",
+      "args": ["/absolute/path/to/scx-mcp-server/dist/server.js"],
+      "env": {
+        "SCX_API_URL": "http://localhost:3000",
+        "SCX_TENANT_ID": "YOUR_TENANT_ID",
+        "SCX_API_KEY": "YOUR_API_KEY",
+        "SCX_JWT_TOKEN": "YOUR_JWT_TOKEN_OR_LEAVE_EMPTY_IF_USING_CC_FLOW",
+        "KEYCLOAK_URL": "https://auth.pacemaker.ai",
+        "SCX_KEYCLOAK_REALM": "YOUR_REALM",
+        "MCP_CLIENT_ID": "YOUR_MCP_SERVICE_ACCOUNT_CLIENT_ID",
+        "MCP_CLIENT_SECRET": "YOUR_MCP_SERVICE_ACCOUNT_CLIENT_SECRET"
+      }
+    },
+
+    "scx-dev-tsx": {
+      "_comment": "Alternative: run TypeScript directly without build step (requires tsx installed)",
+      "command": "npx",
+      "args": ["tsx", "/absolute/path/to/scx-mcp-server/src/server.ts"],
+      "env": {
+        "SCX_API_URL": "http://localhost:3000",
+        "SCX_TENANT_ID": "YOUR_TENANT_ID",
+        "SCX_API_KEY": "YOUR_API_KEY",
+        "SCX_JWT_TOKEN": "YOUR_JWT_TOKEN"
+      }
+    },
+
+    "scx-production": {
+      "_comment": "Production — HTTP transport, points to deployed MCP server",
+      "url": "https://mcp.pacemaker.ai/scx",
+      "auth": {
+        "type": "bearer",
+        "token": "YOUR_MCP_SERVER_BEARER_TOKEN"
+      }
+    }
+
+  },
+
+  "_env_reference": {
+    "SCX_API_URL": "Base URL of forecast-backend (e.g. https://api.pacemaker.ai or http://localhost:3000)",
+    "SCX_TENANT_ID": "Your company/tenant ID — used for SSE stream subscription",
+    "SCX_API_KEY": "API key for endpoints that accept x-api-key (event-extraction, commodity-price/import)",
+    "SCX_JWT_TOKEN": "JWT Bearer token — obtain from Keycloak or set MCP_CLIENT_* for CC flow",
+    "KEYCLOAK_URL": "Keycloak base URL for token refresh (e.g. https://auth.pacemaker.ai)",
+    "SCX_KEYCLOAK_REALM": "Keycloak realm name for your tenant",
+    "MCP_CLIENT_ID": "Keycloak client ID for the MCP service account",
+    "MCP_CLIENT_SECRET": "Keycloak client secret for the MCP service account"
+  },
+
+  "_security_notes": [
+    "Never commit this file with real credentials to version control",
+    "Use a dedicated MCP service account in Keycloak with minimum required roles",
+    "For Group A+B (read-only), the Standard role is sufficient",
+    "For Group C (execute_forecast) and Group E (import), Admin role is required",
+    "Rotate API keys regularly and store them in a secrets manager for production"
+  ]
+}

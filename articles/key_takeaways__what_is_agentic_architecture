@@ -1,0 +1,44 @@
+# Key Takeaways: What Is Agentic Architecture?
+*IBM*
+
+## The Core Idea
+Agentic architecture is the structural framework that enables AI agents to act autonomously — not
+just respond to inputs, but plan, decide, act, and reflect to achieve goals. Think of it as the
+difference between an AI that answers questions and one that actually *gets things done*.
+
+## What We Should Take Away
+
+### 1. Agency Requires Four Core Capabilities
+For an AI system to be truly agentic, it needs: **planning** (intentionality), **forethought**
+(anticipating outcomes), **self-reactiveness** (monitoring its own performance), and
+**self-reflectiveness** (learning and adjusting). Without all four, you have automation — not agency.
+
+### 2. Not All AI Agents Are Actually Agentic
+This distinction matters. A chatbot or text generator is *not* agentic — it handles linear,
+single-turn tasks. A truly agentic system operates autonomously across complex, multi-step workflows
+with little to no human input. The architecture underneath is what makes the difference.
+
+### 3. Architecture Shape Determines What's Possible
+Three main patterns exist, each with real trade-offs:
+
+| Architecture | Structure | Best For | Watch Out For |
+|---|---|---|---|
+| **Vertical** | Leader agent oversees sub-agents | Sequential workflows, document generation | Bottlenecks, single point of failure |
+| **Horizontal** | Agents collaborate as peers | Brainstorming, complex problem-solving | Coordination overhead, slower decisions |
+| **Hybrid** | Leadership shifts based on task | Strategic planning, dynamic processes | Complexity, resource demands |
+
+### 4. Choose Architecture Based on the Problem
+Single-agent systems are simpler, cheaper, and more predictable — ideal for focused, well-defined
+tasks. Multi-agent systems unlock specialization and parallelism, but add coordination complexity.
+**There is no universally superior architecture — fit matters more than sophistication.**
+
+### 5. The Most Advanced Agents Think Like Humans
+Cognitive architectures — particularly the **BDI model** (Beliefs, Desires, Intentions) — mirror
+human reasoning: an agent knows its current reality, knows what it wants to achieve, and commits
+to a plan of action. This is the frontier of agentic design, and the closest AI gets to genuine
+autonomous judgment.
+
+## The Bottom Line
+Agentic architecture is not just a technical detail — it's the foundation that determines whether
+your AI system can handle real-world complexity. The right architecture, matched to the right
+problem, is what separates a useful autonomous system from an overhyped demo.
