@@ -85,7 +85,7 @@ No immediate headcount expansion is required for Phase 1-2. The Replenishment Ag
 
 **Two existing roles expand meaningfully:**
 - **Product owners** must develop fluency with probabilistic systems: human-in-the-loop checkpoint design, eval criteria definition, autonomy threshold configuration, customer rollout strategy. POs who have only run UI-based product development will need deliberate investment here.
-- **UI/UX designers** must design for human-agent collaboration: approval workflows, confidence visualization, exception-only queue patterns. The "show data, let the user act" mental model is insufficient.
+- **UI/UX designers** must design for human-agent collaboration: approval workflows, confidence visualization, exception-only queue patterns. The "show data, let the user act" mental model is insufficient. The design shift is precise: current Pacemaker UIs are **operational cockpits** — the human performs every action. Agentic UIs are **supervision dashboards** — the agent acts, the human reviews exceptions, approves drafts, and overrides when needed. These are different design paradigms with different primary interactions, information hierarchies, and feedback loops.
 
 ---
 

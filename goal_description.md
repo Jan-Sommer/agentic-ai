@@ -9,6 +9,14 @@ This file contains general information about our goals in regards of agentic AI.
 - be prepared to provide our own agentic AI, which clients may use to fulfill the use cases of our products
 - being a one-stop go-to solution for supply chain and sustainability management
 
+## Prioritization Principle
+FOMO is a poor compass for AI adoption. Rather than accumulating initiatives, every agent use case
+should be evaluated on three axes before it enters the roadmap: **impact** (measurable value for
+clients or the business), **feasibility** (can it be built with available technology, skills, and
+integrations?), and **data availability** (is the required data accessible and of sufficient
+quality?). Use cases that score well on all three become roadmap candidates; those that are
+technically interesting but weak on impact or data are deferred until the foundation improves.
+
 ## Internal Goals
 - make the products teams agentic AI ready, so they know how to work with the it
 - setup security standards and guardrails, to ensure the usage of agentic AI is safe

@@ -21,7 +21,7 @@ Existing UIs and APIs remain fully operational throughout. The agentic layer is 
 
 **Model independence.** Pacemaker's intelligence is exposed as structured tools (via MCP or equivalent), not coupled to a specific LLM. Agents are model-agnostic. This ensures the architecture survives model shifts and lets clients bring their own AI stack.
 
-**Agents layer on top of, not replace, existing capabilities.** The underlying APIs, calculation engines, and ML models remain the source of truth. Agents orchestrate and act on them. This preserves backwards compatibility and reduces risk.
+**Agents layer on top of, not replace, existing capabilities.** The underlying APIs, calculation engines, and ML models remain the source of truth. Agents orchestrate and act on them. This preserves backwards compatibility and reduces risk. Architecturally, this is the shift from **system of record** (Pacemaker today: stores and surfaces intelligence) to **system of action** (Pacemaker with the agentic layer: acts on it). The records remain; the actors change.
 
 ---
 
@@ -39,7 +39,7 @@ Existing UIs and APIs remain fully operational throughout. The agentic layer is 
 
 ### Phase 2 — Wedge: First agent, proving the pattern
 
-The **Replenishment Agent** is the entry point. It builds entirely on already-deployed integrations (demand forecast + ERP connectors), solves a concrete operational pain (manual order drafting), and validates the human-in-the-loop approval workflow that all subsequent agents will reuse.
+The **Replenishment Agent** is the entry point. It scores well on all three use case evaluation axes: **impact** (eliminates manual order-drafting, measurable working capital improvement), **feasibility** (builds entirely on already-deployed integrations — demand forecast + ERP connectors), and **data availability** (forecast outputs and inventory positions already flow through Pacemaker). It also validates the human-in-the-loop approval workflow that all subsequent agents will reuse.
 
 In parallel: formalize the **human checkpoint framework** — the reversibility/consequence matrix from the scenario description — as a shared standard that applies to every agent, not built ad hoc per agent.
 
@@ -66,7 +66,7 @@ This phase is separated not because it's optional, but because it depends on bot
 Areas that need more scoping before moving into implementation:
 
 1. **Tool catalog design** — which APIs get wrapped first, what is the auth/tenancy model, and how is the catalog structured so it works cross-pillar?
-2. **Human approval UX** — does the approval workflow live inside existing Pacemaker UIs, in a new agent console, or both?
+2. **Human approval UX** — does the approval workflow live inside existing Pacemaker UIs, in a new agent console, or both? The distinction to resolve: current UIs are operational cockpits (humans perform each action); the agentic approval UX is a supervision dashboard (humans handle exceptions, review drafts, approve consequential writes). These are different design paradigms, and the product needs a deliberate answer on which surface hosts which.
 3. **ERP write-back security** — what is the audit and authorization model for agentic writes back to client source systems?
 4. **Organizational enablement format** — how are the internal goals (team readiness, knowledge sharing, security/quality guardrails) structured? Guild, community of practice, internal pilot program?
 5. **Pricing model** — the shift from seat-based to outcome/usage-based pricing that agentic delivery implies needs commercial framing alongside the technical architecture
